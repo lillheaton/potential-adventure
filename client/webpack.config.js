@@ -2,11 +2,11 @@ const { join, resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-const STATIC = resolve(join(__dirname, 'public'))
-const DIST = resolve(join('./', 'dist'))
-const BUILD = resolve(join(__dirname, '../server/PotentialAdventure/static'))
-
 const PRODUCTION = process.env.NODE_ENV === 'production'
+
+const STATIC = resolve(join(__dirname, 'public'))
+const BUILD = resolve(join(__dirname, '../server/PotentialAdventure/static'))
+const DIST = PRODUCTION ? BUILD : resolve(join('./', 'dist'))
 
 module.exports = {
   mode: PRODUCTION ? 'production' : 'development',
@@ -32,7 +32,9 @@ module.exports = {
 
   output: {
     path: DIST,
-    filename: '[name].bundle.js',
+    filename: PRODUCTION
+      ? '[name].[contenthash].bundle.js'
+      : '[name].bundle.js',
     chunkFilename: 'chunk.[id].js',
     publicPath: '/'
   },
