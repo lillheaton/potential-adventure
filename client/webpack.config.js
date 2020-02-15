@@ -4,9 +4,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const STATIC = resolve(join(__dirname, 'public'))
 const DIST = resolve(join('./', 'dist'))
+const BUILD = resolve(join(__dirname, '../server/PotentialAdventure/static'))
+
+const PRODUCTION = process.env.NODE_ENV === 'production'
 
 module.exports = {
-  mode: 'development',
+  mode: PRODUCTION ? 'production' : 'development',
 
   entry: {
     app: './index.js'
