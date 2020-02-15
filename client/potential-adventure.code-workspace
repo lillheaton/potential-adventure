@@ -1,0 +1,29 @@
+{
+  "folders": [
+    {
+      "name": "Potential Adventure",
+      "path": "."
+    }
+  ],
+
+  "settings": {
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+    },
+
+    "[javascript]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+  },
+
+  "extensions": {
+    "recommendations": [
+      "EditorConfig.EditorConfig",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "mgmcdermott.vscode-language-babel",
+    ]
+  }
+}
